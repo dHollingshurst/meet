@@ -1,5 +1,6 @@
-# Meetapp
-Connect with likeminded people in your city by finding events you are interested in.
+# meet
+an app for people to find events in a city of their choice. 
+
 
 ## Objectives
 - Build a serverless React PWA (for online and offline use).
