@@ -1,139 +1,141 @@
-# meet
-an app for people to find events in their city of choice
-
-Meetapp
+# Meetapp
 Connect with likeminded people in your city by finding events you are interested in.
 
-Objectives
-Build a serverless React PWA (for online and offline use).
-Follow a BDD & TDD methodology (scenarios & stories, red-green-refactor, quick feedback).
-Fetch event data from Google Calendar API.
-Data visualisation (number of upcoming events, & popularity of event genres)
-Context
-Serverless allows: less backend maintenance, increased scalability, high availability.
-PWA's allow: instant loading, offline availability, and cross-platform features.
-Features
-1. Search events by city
-Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
+## Objectives
+- Build a serverless React PWA (for online and offline use).
+- Follow a BDD & TDD methodology (scenarios & stories, red-green-refactor, quick feedback).
+- Fetch event data from Google Calendar API.
+- Data visualisation (number of upcoming events, & popularity of event genres)
 
-User Story: As a user, I should be able to filter events by city, so that I can see the list of events that take place in that city.
+### Context
+- Serverless allows: less backend maintenance, increased scalability, high availability.
+- PWA's allow: instant loading, offline availability, and cross-platform features.
 
-Given user hasn't serached for any city,
+## Features
 
-When the user opens the app,
+### **1. Search events by city**
+***Scenario 1:*** When user hasn’t searched for a city, show upcoming events from all cities.
 
-Then the user should see a list of all upcoming events.
+>*User Story*:  As a user, I should be able to filter events by city, so that I can see the list of events that take place in that city.
 
+*Given* user hasn't serached for any city,
 
-Scenario 2: User should see a list of suggestions when they search for a city.
+*When* the user opens the app,
 
-User Story: As a user, I should be able to see a list of suggestsions when I start typing, so that events that I am show are near my location.
+*Then* the user should see a list of all upcoming events.
+<br><br>
 
-Given the main page is open,
+**Scenario 2:** User should see a list of suggestions when they search for a city.
 
-When the user starts typing in the city textbox,
+>*User Story*:  As a user, I should be able to see a list of suggestsions when I start typing, so that events that I am show are near my location.
 
-Then the user should see a list of cities (suggestions) that match what they've typed.
+*Given* the main page is open,
 
+*When* the user starts typing in the city textbox,
 
-Scenario 3: User can select a city from the suggested list.
+*Then* the user should see a list of cities (suggestions) that match what they've typed.
+<br><br>
 
-User Story: As a user, I should be able to select a city from the sugessted list, so that I can see events relevant to my location.
+**Scenario 3:** User can select a city from the suggested list.
 
-Given city suggestsions are visible after a user typed something in the city textbox,
+>*User Story*:  As a user, I should be able to select a city from the sugessted list, so that I can see events relevant to my location.
 
-When the user selects a city from the list,
+*Given* city suggestsions are visible after a user typed something in the city textbox,
 
-Then user's city should be changed to their selection, and be shown that city's list of events
+*When* the user selects a city from the list,
 
+*Then*  user's city should be changed to their selection, and be shown that city's list of events
+<br><br>
 
-2. Toggle info visibility
-Scenario 1: An event element is collapsed by default
+### **2. Toggle info visibility**
+**Scenario 1:** An event element is collapsed by default
 
-User Story: As a user, I should see a list of events without details, so that I can quickly get an overview of what is available.
+>*User Story*:  As a user, I should see a list of events without details, so that I can quickly get an overview of what is available.
 
-Given a user has searched for a city,
+*Given* a user has searched for a city,
 
-When the list of events is shown,
+*When* the list of events is shown,
 
-Then all events details should be hidden.
+*Then* all events details should be hidden.
+<br><br>
 
+**Scenario 2:** User can expand an event to see its details
 
-Scenario 2: User can expand an event to see its details
+>*User Story*:  As a user, I should be able to reveal event details, so that I can get a more in-depth idea of what the event is about.
 
-User Story: As a user, I should be able to reveal event details, so that I can get a more in-depth idea of what the event is about.
+*Given* a list of unexpanded events are shown,
 
-Given a list of unexpanded events are shown,
+*When* a user clicks on an event,
 
-When a user clicks on an event,
+*Then* event details should be revealed.
+<br><br>
 
-Then event details should be revealed.
+**Scenario 3:** User can collapse an event to hide its details
 
+>*User Story*:  As a user, I should be able to hide event details, so that I can go back to seeing the main overview of available events.
 
-Scenario 3: User can collapse an event to hide its details
+*Given* an event has had its details expanded,
 
-User Story: As a user, I should be able to hide event details, so that I can go back to seeing the main overview of available events.
+*When* a user hides details,
 
-Given an event has had its details expanded,
+*Then* the event's details should collapse.
+<br><br>
 
-When a user hides details,
+### **3. Select number of events to show**
+**Scenario 1:** When user hasn’t specified a number, 32 is the default number
 
-Then the event's details should collapse.
+>*User Story*:  As a user, I should be able to see a list of events by default, so that I can get started searching immediately.
 
+*Given* a number of events to be shown has not been specified,
 
-3. Select number of events to show
-Scenario 1: When user hasn’t specified a number, 32 is the default number
+*When* a user searches for events in a city,
 
-User Story: As a user, I should be able to see a list of events by default, so that I can get started searching immediately.
+*Then* a list of 32 events should be shown.
+<br><br>
 
-Given a number of events to be shown has not been specified,
+**Scenario 2:** User can change the number of events they want to see
 
-When a user searches for events in a city,
+>*User Story*:  As a user, I should be able to change the number of events shown, so that I can choose whether many or few are shown.
 
-Then a list of 32 events should be shown.
+*Given* a list of events is shown,
 
+*When* a user specifies a number of events to show,
 
-Scenario 2: User can change the number of events they want to see
+*Then* the list should match the chosen number.
+<br><br>
 
-User Story: As a user, I should be able to change the number of events shown, so that I can choose whether many or few are shown.
 
-Given a list of events is shown,
+### **4. Available offline**
+**Scenario 1:** Show cached data when there’s no internet connection
 
-When a user specifies a number of events to show,
+>*User Story*:  As a user, I should be able to access the app offline, so that I can view events even on a patchy connection or when I've run out of data.
 
-Then the list should match the chosen number.
+*Given* the app is live,
 
+*When* connection to internet is lost,
 
-4. Available offline
-Scenario 1: Show cached data when there’s no internet connection
+*Then* app should still work by showing data taken from an offline cache.
+<br><br>
 
-User Story: As a user, I should be able to access the app offline, so that I can view events even on a patchy connection or when I've run out of data.
+**Scenario 2:** Show error when user changes the settings (city, time range)
 
-Given the app is live,
+>*User Story*:  As a user, I should be able to see an error message when I do something wrong, so that I can go back to being able to use the app.
 
-When connection to internet is lost,
+*Given* default time and city settings,
 
-Then app should still work by showing data taken from an offline cache.
+*When* a user changes city and time settings,
 
+*Then* an error message should be displayed.
+<br><br>
 
-Scenario 2: Show error when user changes the settings (city, time range)
 
-User Story: As a user, I should be able to see an error message when I do something wrong, so that I can go back to being able to use the app.
+### 5. **Data visualisation**
+**Scenario 1:** Show a chart with the number of upcoming events in each city
 
-Given default time and city settings,
+>*User Story*:  As a user, I should be able to see a data visualisation of upcoming events, so that I can better and more easily understand the situation.
 
-When a user changes city and time settings,
+*Given* a city has been chosen,
 
-Then an error message should be displayed.
+*When* a user chooses to view data on upcoming events,
 
-
-5. Data visualisation
-Scenario 1: Show a chart with the number of upcoming events in each city
-
-User Story: As a user, I should be able to see a data visualisation of upcoming events, so that I can better and more easily understand the situation.
-
-Given a city has been chosen,
-
-When a user chooses to view data on upcoming events,
-
-Then appropriate charts and data visualisations should be displayed.
+*Then* appropriate charts and data visualisations should be displayed.
